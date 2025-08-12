@@ -1,3 +1,3 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+* This is the initial relaese of viewpdf, an android flutter plugin to view pdf files.
