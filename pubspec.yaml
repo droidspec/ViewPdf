@@ -1,7 +1,7 @@
 name: viewpdf
 description: "An android PDF Viewer For Flutter."
 version: 1.0.0
-homepage:
+homepage: https://github.com/droidspec/ViewPdf
 
 environment:
   sdk: ^3.8.1
