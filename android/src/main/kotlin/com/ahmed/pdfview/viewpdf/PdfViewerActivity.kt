@@ -105,7 +105,7 @@ class PdfViewerActivity : AppCompatActivity() {
                                 ?.findFirstCompletelyVisibleItemPosition() ?: 0
                             if (firstComplete != RecyclerView.NO_POSITION) {
                                 currentPage = firstComplete
-                                binding.pageNum.setText(getString(R.string.page_num, firstComplete + 1))
+                                binding.pageNum.setText("${firstComplete + 1}")
                             }
                         }
                     }
@@ -121,7 +121,7 @@ class PdfViewerActivity : AppCompatActivity() {
 
             // Update UI immediately
             currentPage = page
-            binding.pageNum.setText(getString(R.string.page_num, page + 1))
+            binding.pageNum.setText("${page + 1}")
             binding.pageNum.setSelection(binding.pageNum.length())
         }
     }
@@ -172,7 +172,7 @@ class PdfViewerActivity : AppCompatActivity() {
                                 }
                                 binding.pageNum.setSelection(binding.pageNum.length())
                             } catch (e: NumberFormatException) {
-                                binding.pageNum.setText(getString(R.string.page_num, currentPage + 1))
+                                binding.pageNum.setText("${currentPage + 1}")
                             }
                         }
                     }
