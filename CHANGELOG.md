@@ -1,3 +1,3 @@
-## 1.0.0
+## 1.0.1
 
-* This is the initial relaese of viewpdf, an android flutter plugin to view pdf files.
+- Fixed page number display in pdf viewer
