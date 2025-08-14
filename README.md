@@ -12,8 +12,9 @@ Licensed under Apache License 3.0.
 a specialized package that includes platform-specific implementation code for
 Android.
 
-## What's new in 1.0.0
-* view pdf files
-* zoom features
-* navigation forward and back
+## What's new in 1.0.2
+- bugs fixed
+- view pdf files
+- zoom features
+- navigation forward and back
 

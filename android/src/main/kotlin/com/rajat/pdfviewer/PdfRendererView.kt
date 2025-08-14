@@ -83,9 +83,21 @@ class PdfRendererView @JvmOverloads constructor(
 
     val totalPageCount: Int
         get() {
-            return pdfRendererCore.getPageCount()
+            return if (this::pdfRendererCore.isInitialized && pdfRendererCoreInitialised) {
+                try {
+                    pdfRendererCore.getPageCount()
+                } catch (e: Exception) {
+                    0  // Fallback value if there's an error
+                }
+            } else {
+                0  // Not initialized yet
+            }
         }
-
+    // Helper method to check if operations are safe
+    fun isRendererReady(): Boolean {
+        return this::pdfRendererCore.isInitialized && 
+            pdfRendererCoreInitialised
+    }
 
 
     /**
@@ -254,6 +266,10 @@ class PdfRendererView @JvmOverloads constructor(
      * @param delayMillis Optional delay before scrolling (default 150ms).
      */
     fun jumpToPage(pageNumber: Int, smoothScroll: Boolean = true, delayMillis: Long = 150L) {
+        if (!isRendererReady()) {
+            statusListener?.onError(IllegalStateException("Renderer not ready"))
+            return
+        }
         if (pageNumber !in 0 until totalPageCount) return
 
         if (!::recyclerView.isInitialized) {
@@ -370,8 +386,12 @@ class PdfRendererView @JvmOverloads constructor(
      * @return List of Bitmap pages.
      */
     suspend fun getLoadedBitmaps(): List<Bitmap> {
-        return (0..<totalPageCount).mapNotNull { page ->
-            getBitmapByPage(page)
+        return if (isRendererReady()) {
+            (0..<totalPageCount).mapNotNull { page ->
+                getBitmapByPage(page)
+            }
+        } else {
+            emptyList()
         }
     }
 

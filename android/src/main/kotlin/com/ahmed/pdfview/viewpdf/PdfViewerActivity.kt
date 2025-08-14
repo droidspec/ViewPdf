@@ -136,6 +136,7 @@ class PdfViewerActivity : AppCompatActivity() {
                 currentPage = 0
             }
         }
+
     }
 
     private val textWatcher = object : TextWatcher {

@@ -1,3 +1,3 @@
-## 1.0.1
+## 1.0.2
 
-- Fixed page number display in pdf viewer
+- Bug fixed in pdfCore
